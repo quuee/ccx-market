@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ccx.mngt.dao.RoleDao">
+
+    <resultMap id="baseRole" type="RoleDO">
+        <id column="id" property="id"/>
+        <result column="role_name" property="roleName"/>
+        <result column="enable" property="enable"/>
+        <result column="create_date" property="createDate"/>
+
+        <collection property="menuSet" select="com.ccx.mngt.dao.MenuDao.selectMenuByRoleId" column="id"/>
+    </resultMap>
+
+    <sql id="role_base_sql">
+        id,role_name,enable,create_date
+    </sql>
+    
+    <select id="selectRoleByUserId" resultMap="baseRole">
+        select
+          r.id,r.role_name
+        from `sys_role` r,sys_user_role ur
+        where
+          r.id=ur.role_id
+          and r.enable = true
+          and ur.user_id= #{userId}
+    </select>
+
+</mapper>

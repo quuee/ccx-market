@@ -1,0 +1,18 @@
+upload:
+  url: e:/tmp
+
+market:
+  security:
+    # 过期时间
+    expiration-date: 7200000
+    # 密钥
+    applet-secret: ccx.market
+    token-header: Authorization
+    # 携带者 后面需要个空格
+    bearer: Bearer
+    authorities: authorities
+    # 过期刷新时间
+    applet-forbid-refresh-date: 7200000
+    need-refresh: need-refresh
+
+

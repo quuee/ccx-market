@@ -1,0 +1,39 @@
+### market-mngt 登录接口
+POST {{baseUrl}}/user/login HTTP/1.1
+content-type: application/x-www-form-urlencoded
+# User-Agent: 
+
+username=admin&password=123456
+
+### market-front 获取手机验证码,用户登录和注册
+GET {{baseUrl}}/appuser/getPhoneCode HTTP/1.1
+content-type: application/x-www-form-urlencoded
+
+phone=18205778907
+
+### market-front 手机登录接口
+POST {{baseUrl}}/phone/login HTTP/1.1
+content-type: application/x-www-form-urlencoded
+
+phone=18205778907&code=123456
+
+> {% client.global.set("Authorization_token",response.body.token); %}
+
+### market-front 手机号码注册
+POST {{baseUrl}}/appuser/register HTTP/1.1
+content-type: application/json
+
+{
+    "nickName":"两只老虎",
+    "phone":"18205778907",
+    "email":"naageo@163.com",
+    "code":"123456"
+}
+
+### market-front 获取分类
+POST {{baseUrl}}/category/queryCategoryList HTTP/1.1
+Accept: application/json
+Authorization: Bearer {{Authorization_token}}
+
+###
+

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ccx.mngt.dao.UserDao">
+
+    <resultMap id="baseUser" type="UserDO">
+        <id column="id" property="id"/>
+        <result column="username" property="username"/>
+        <result column="password" property="password"/>
+        <result column="phone" property="phone"/>
+        <result column="enable" property="enable"/>
+        <result column="super_user" property="superUser"/>
+        <result column="create_date" property="createDate"/>
+
+        <collection property="roleSet" select="com.ccx.mngt.dao.RoleDao.selectRoleByUserId" column="id"/>
+    </resultMap>
+
+    <sql id="user_base_sql">
+        id,username,password,phone,enable,super_user,create_date
+    </sql>
+    
+    <select id="selectUserByName" resultMap="baseUser">
+        select <include refid="user_base_sql"/> from `sys_user` where enable=true and `username`= #{username}
+    </select>
+
+</mapper>
