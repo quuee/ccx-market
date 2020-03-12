@@ -4,8 +4,7 @@
 <mapper namespace="com.ccx.mngt.dao.MenuDao">
 
 
-
-    <select id="selectMenuByRoleId" resultType="MenuDO">
+    <select id="selectMenuByRoleId" resultType="com.ccx.entity.sys.MenuDO">
         select
           m.id, m.menu_name, m.permission, m.path, m.parent_menu_id , m.menu_type
         from sys_role_menu rm,sys_menu m
