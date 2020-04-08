@@ -38,11 +38,11 @@ public class CategoryController {
 
         UserAllCategoryVO userAllCategoryVO = new UserAllCategoryVO();
 
-        List<UserCategoryVO> userCategoryVOS = userCategoryService.getUserCategoryList(name);
-        userAllCategoryVO.setUserCategoryList(userCategoryVOS);
-
-        long size = redisUtil.lGetListSize(RedisKey.APP_DEFAULT_CATEGORY);
-        List<Object> objects =  redisUtil.lGet(RedisKey.APP_DEFAULT_CATEGORY, 0, size);
+//        List<UserCategoryVO> userCategoryVOS = userCategoryService.getUserCategoryList(name);
+//        userAllCategoryVO.setUserCategoryList(userCategoryVOS);
+//
+//        long size = redisUtil.lGetListSize(RedisKey.APP_DEFAULT_CATEGORY);
+//        List<Object> objects =  redisUtil.lGet(RedisKey.APP_DEFAULT_CATEGORY, 0, size);
 
 
         return R.ok(userAllCategoryVO);
